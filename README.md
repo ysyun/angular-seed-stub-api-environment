@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Introduction
 
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
@@ -665,3 +666,7 @@ You can follow the [Angular change log here](https://github.com/angular/angular/
 # License
 
 MIT
+=======
+# angular-test-environment
+Development &amp; Test Environment based on NodeJS, Tomcat with http-proxy
+>>>>>>> abf5f7e06b219814189013995988070ca62ccfa3

@@ -5,5 +5,8 @@
     "**/coverage_js": true,
     "**/coverage": true,
     "**/dist": true
-  }
+},
+"angulardoc.repoId": "4998361d-df5f-4e2e-96fe-0bb21c9c1558",
+"angulardoc.lastSync": 0,
+"vsicons.presets.angular": true
 }
