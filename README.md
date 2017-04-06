@@ -1,6 +1,7 @@
-<<<<<<< HEAD
-# Introduction
+# Angular Development & Test Environment
+Development &amp; Test Environment based on NodeJS, Tomcat with http-proxy
 
+# Introduction
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 [![Build Status](https://travis-ci.org/mgechev/angular-seed.svg?branch=master)](https://travis-ci.org/mgechev/angular-seed)
 [![Build Status](https://ci.appveyor.com/api/projects/status/jg5vg36w0klpa00e/branch/master?svg=true)](https://ci.appveyor.com/project/mgechev/angular2-seed)
@@ -666,7 +667,4 @@ You can follow the [Angular change log here](https://github.com/angular/angular/
 # License
 
 MIT
-=======
-# angular-test-environment
-Development &amp; Test Environment based on NodeJS, Tomcat with http-proxy
->>>>>>> abf5f7e06b219814189013995988070ca62ccfa3
+

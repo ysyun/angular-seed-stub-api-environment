@@ -3,6 +3,13 @@
     "tslint",
     "build.test",
     "karma.run"
+  ],
+  "serve": [
+    "build.dev",
+    "server.start",
+    "stub.server.start",
+    "proxy.server.start",
+    "watch.dev"
   ]
 }
 
