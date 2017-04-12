@@ -1,0 +1,7 @@
+{
+    "local-tomcat": {
+        "web": "http://0.0.0.0:8080/",
+        "websocket": "ws://0.0.0.0:8080",
+        "logout": "http://0.0.0.0:8080/logout"
+    }
+}

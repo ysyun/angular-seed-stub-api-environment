@@ -1,6 +1,6 @@
-import { serveStub } from '../../utils';
+import { serveAll } from '../../utils';
 
 /**
  * Executes the build process, serving the files of the development environment using an `express` server.
  */
-export = serveStub;
+export = serveAll;

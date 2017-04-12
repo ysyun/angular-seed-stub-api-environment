@@ -4,7 +4,7 @@ import * as runSequence from 'run-sequence';
 
 import Config from '../../config';
 import { changeFileManager } from './code_change_tools';
-import { notifyLiveReload } from '../../utils';
+import { notifyLiveReloadAll } from '../../utils';
 
 const plugins = <any>gulpLoadPlugins();
 
@@ -36,7 +36,7 @@ export function watch(taskname: string, root: string = Config.APP_SRC) {
 
         runSequence(taskname, () => {
           changeFileManager.clear();
-          notifyLiveReload(e);
+          notifyLiveReloadAll(e);
         });
 
       }, 100);

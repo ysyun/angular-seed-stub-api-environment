@@ -1,9 +1,51 @@
-import { log }from './utils';
+import * as express from 'express';
+import * as fallback from 'express-history-api-fallback';
+import * as open from 'open';
+import * as path from 'path';
 
-export function serveStub() {
-    log('>>> start STUB Server');
+import * as codeChangeTool from './code_change_tools';
+import { changeFileManager } from './code_change_tools';
+import Config from '../../config';
+
+/**
+ * read ports.json config
+ */
+let ports = require(path.join(process.cwd(), 'tools/config/stub_proxy/server-port.json'));
+
+/**
+ * Serves the Single Page Application.
+ */
+export function serveAll(cb: Function, proxyTarget: string = 'stubs', isDebug: boolean = true) {
+
+    const tracker = (Math.random() * Date.now()).toString(36);
+    const params = `tracker=${tracker}&debug=${isDebug}&proxy=${proxyTarget}`;
+
+    process.on('exit', (_: any) => changeFileManager.clear());
+    process.on('SIGINT', (_: any) => process.exit(1));
+    process.on('SIGTERM', (_: any) => process.exit(1));
+
+    const server = require(path.join(process.cwd(), 'tools/server/server'));
+
+    const livereloader = require('tiny-lr')();
+    codeChangeTool.setLiveReloader(livereloader);
+    const reload = require(path.join(process.cwd(), 'tools/server/reload')).serve({ port: ports.livereload, tinylr: livereloader });
+    const proxy = require(path.join(process.cwd(), 'tools/server/proxy')).serve({ port: ports.proxy });
+    const stub = require(path.join(process.cwd(), 'tools/server/stub')).serve({ port: ports.stub });
+
+    server.serve({ port: ports.web, livereloadPort: ports.livereload, reload, proxy, stub })
+        .then((instance: any) => {
+            const { port, address } = instance.address();
+            open(`http://${address}:${port}/?${params}`);
+        })
+        .catch((e: any) => console.error('server exception', e));
 }
 
-export function serveProxy() {
-    log('>>> start PROXY Server');
+/**
+ * This utility method is used to notify that a file change has happened and subsequently calls the `changed` method,
+ * which itself initiates a BrowserSync reload.
+ * @param {any} e - The file that has changed.
+ */
+export function notifyLiveReloadAll(e: any) {
+    let fileName = e.path;
+    codeChangeTool.changed(fileName);
 }

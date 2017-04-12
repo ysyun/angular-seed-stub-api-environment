@@ -7,7 +7,7 @@
       "name": "Gulp serve.dev",
       "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
       "args": [
-        "serve.dev"
+        "serve"
       ],
       "env": {
         "NODE_ENV": "development",
