@@ -26,6 +26,7 @@
     "postinstall": "gulp check.versions && gulp build.bundle.rxjs && npm prune && gulp webdriver && gulp print.banner",
     "reinstall": "npm cache clean && npm install",
     "serve.coverage": "gulp serve.coverage --color",
+    "serve": "gulp serve --color --env-config dev",
     "serve.dev": "gulp serve.dev --color --env-config dev",
     "serve.e2e": "gulp serve.e2e --color",
     "serve.prod": "gulp serve.prod --color --env-config prod --build-type prod",
