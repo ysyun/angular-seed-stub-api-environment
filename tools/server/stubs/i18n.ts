@@ -37,8 +37,8 @@ module.exports = function (app: any) {
             .then((arg: any) => {
                 let messages: string = arg[0], toggles: string = arg[1];
                 res.setHeader('content-type', 'text/javascript');
-                messages = 'var __prI18n = ' + messages + ';\n';
-                toggles = 'var __prSettings = ' + toggles + ';\n';
+                messages = 'var __i18n = ' + messages + ';\n';
+                toggles = 'var __settings = ' + toggles + ';\n';
                 return res.send(messages + toggles);
             })['catch'](next);
     });
