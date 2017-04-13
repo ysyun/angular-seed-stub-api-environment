@@ -1,9 +1,9 @@
 {
-  "name": "angular-seed",
-  "version": "0.0.1",
-  "description": "Modular starter project for Angular 2 (and beyond) with statically typed build and AoT compilation",
+  "name": "angular-seed-stub-api-environment",
+  "version": "1.0.0",
+  "description": "Local developement with Stub/Api server based on angular-seed",
   "repository": {
-    "url": "https://github.com/mgechev/angular-seed"
+    "url": "https://github.com/ysyun/angular-seed-stub-api-environment.git"
   },
   "scripts": {
     "build.dev": "gulp build.dev --color --env-config dev",
@@ -44,8 +44,8 @@
     "compodoc": "node_modules/.bin/compodoc -p src/client/tsconfig.json",
     "serve.compodoc": "node_modules/.bin/compodoc -s"
   },
-  "author": "Minko Gechev <mgechev>",
-  "maintainer": "Peter Yun <ysyun>",
+  "author": "Peter Yun <ysyun>",
+  "angular-seed-author": "Minko Gechev <mgechev>",
   "license": "MIT",
   "devDependencies": {
     "@angular/compiler-cli": "^4.0.0",
