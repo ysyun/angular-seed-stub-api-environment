@@ -42,7 +42,8 @@
     "webdriver-start": "webdriver-manager start",
     "webdriver-update": "node_modules/protractor/bin/webdriver-manager update",
     "compodoc": "node_modules/.bin/compodoc -p src/client/tsconfig.json",
-    "serve.compodoc": "node_modules/.bin/compodoc -s"
+    "serve.compodoc": "node_modules/.bin/compodoc -s",
+    "release": "np"
   },
   "author": "Peter Yun <ysyun>",
   "angular-seed-author": "Minko Gechev <mgechev>",
@@ -121,6 +122,7 @@
     "karma-remap-istanbul": "^0.2.1",
     "merge-stream": "^1.0.0",
     "minimatch": "^3.0.3",
+    "np": "^2.13.1",
     "open": "0.0.5",
     "properties-parser": "^0.3.1",
     "protractor": "^4.0.14",
