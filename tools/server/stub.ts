@@ -11,30 +11,20 @@ const debug = require('debug')('upstream:stub');
 
 exports.serve = function(options: any) {
 
-    const cookie = require('cookie-parser');
-    const origin = require('./middlewares/origin');
-
     const app = express();
-    app.use(cookie())
+    app.use(require('cookie-parser')())
         .use(body.json())
-        .use(origin());
+        .use(require('./middlewares/origin')());
 
     // set the special stub logics
-    glob.sync(path.join(__dirname, 'stubs', '**/*.ts'))
-        .filter((file: any) => {
-            return path.basename(file)[0] !== '_';
-        })
-        .map(require).reduce(((app: any, stub: any) => {
-            return stub(app) || app;
-        }), app)
-        .use('/stubs', (req: any, res: any, next: any) => {
+    app.use('/stubs', (req: any, res: any, next: any) => {
             req.method = 'GET';
             return next();
-        })
-        .use(`${Config.APP_BASE}stubs`, express.static(path.resolve(process.cwd(), 'tools/stubs')));
+       })
+       .use(`${Config.APP_BASE}stubs`, express.static(path.resolve(process.cwd(), 'tools/stubs')));
 
     return startServer(app, options, 'stub')
         .tap((server: any) => {
-            // TODO: socket.io handshake
+            // console.log('> stub server', server);
         });
 };

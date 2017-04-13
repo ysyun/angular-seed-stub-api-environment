@@ -6,9 +6,29 @@ We can test web application with local stub json file or api server.
 - Static Server: It serves static files (.js, .css, .font, .html)
 - Stub Server: It serves local stub json files 
 - Proxy Server: It serves local/remote API server
+- LiveReload Server: This seed use tiny-lr for refreshing instead of BrowserSync
 
 ## Usage
- to be continue... 
+ 
+- command: ```gulp serve```
+
+
+## Config
+
+- set port of servers :  ```tools/config/stub_proxy/server-port.json```
+- set address of api server : ```tools/config/stub_proxy/api-address.json```
+
+## Codes
+
+- servers : ```tools/server/*.ts```
+- gulp task : ```tools/utils/project/*.ts```
+
+## Stub Files
+
+- set json files : ```tools/stubs/**/*.json```
+If you call api of application internally such as ```http://0.0.0.0:5050/stubs/auth.json```, Static Server will require this api to Stub Server```. ```/stubs``` uri is served from Stubs server.
+
+to be continue...
 
 --------
 --------

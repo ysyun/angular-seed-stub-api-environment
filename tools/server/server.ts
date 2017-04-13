@@ -6,7 +6,6 @@ import * as http from 'http';
 import { log } from '../utils';
 import { startServer } from './utils';
 
-
 function report(server: any, template: any) {
     return Promise.resolve(server)
         .then((instance: any) => {
@@ -31,7 +30,6 @@ exports.serve = function(options: any) {
     // @see http://expressjs.com/en/starter/static-files.html
     app.use(require('connect-livereload')({ port: options.livereloadPort }))
         .use(require('./middlewares/rewriter')())
-        .use(require('./middlewares/redirecter')())
         .use(require('./middlewares/origin')())
         .use(require('./middlewares/spa')({ reload: options.reload }))
         .use(`${Config.APP_BASE}${Config.APP_SRC}`, express.static(resolve(process.cwd(), Config.APP_SRC)))
@@ -50,7 +48,7 @@ exports.serve = function(options: any) {
                 return 'Serving LiveReload on ' + host;
             });
             report(options.proxy, (host: string) => {
-                return 'Serving Proxy on ' + host;
+                return 'Serving API on ' + host;
             });
             report(options.stub, (host: string) => {
                 return 'Serving Stub on ' + host;

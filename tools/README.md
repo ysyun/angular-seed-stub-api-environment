@@ -1,14 +1,4 @@
-
-
-## The Stub & Proxy environment for testing.
-
-You can establish the test environment with Web, Stub and Proxy server
-
-[[https://github.com/ysyun/angular-seed-stub-proxy-environment/blob/master/tools/as-spe.png|alt=stub-proxy]]
-
-
------
-## Angular-Seed Documentation
+# Tools Documentation
 
 This document contains information about the tools section of the `angular-seed`.
 
