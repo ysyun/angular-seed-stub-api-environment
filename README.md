@@ -1,7 +1,7 @@
 # Development & Test Environment based on angular-seed
 We can test web application with local stub json file or api server. 
 
-[[https://github.com/ysyun/angular-seed-stub-proxy-environment/blob/master/tools/as-spe.png|alt=stub-proxy]]
+[https://github.com/ysyun/angular-seed-stub-proxy-environment/blob/master/tools/as-spe.png]
 
 - Static Server: It serves static files (.js, .css, .font, .html)
 - Stub Server: It serves local stub json files 
