@@ -24,7 +24,11 @@ module.exports = function (options: any) {
         if (!origin) {
             return console.log(`Origin for socket ${socketId} is undefined. Is socket.io properly setup?`);
         }
-        const target = origin.proxy === 'stubs' ? stub : proxy;
+        // default target is stub server
+        let target = options.stub;
+        if (req.origin && req.origin.proxy && req.origin.proxy !== 'stubs') {
+           target = options.proxy;
+        }
         return target.then((instance: any) => {
             const ref = instance.address(), address = ref.address, port = ref.port;
             const host = `http://${address}:${port}/`;
@@ -35,7 +39,7 @@ module.exports = function (options: any) {
     });
 
     return function (req: any, res: any, next: any) {
-        // default is stub server
+        // default target is stub server
         let target = options.stub;
         if (req.origin && req.origin.proxy && req.origin.proxy !== 'stubs') {
            target = options.proxy;
