@@ -11,7 +11,7 @@ export class ProjectConfig extends SeedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
 
-  STUB_PROXY_PREFIX = 'JM';
+  STUB_API_PREFIX = 'JM';
 
   constructor() {
     super();

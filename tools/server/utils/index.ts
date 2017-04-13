@@ -40,7 +40,7 @@ export function startServer(app: any, options: any, serverName: string): any {
 }
 
 export function readProxyAddress(env: any) {
-    let cloud: any = fs.readJsonSync(path.join(process.cwd(), 'tools/config/stub_proxy/api-address.json'))[env];
+    let cloud: any = fs.readJsonSync(path.join(process.cwd(), 'tools/config/stub_api/api-address.json'))[env];
     for (let endpoint in cloud) {
         if (typeof cloud[endpoint] === 'object') {
             cloud[endpoint] = url.format(cloud[endpoint]);

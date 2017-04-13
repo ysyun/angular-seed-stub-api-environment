@@ -10,15 +10,15 @@ import Config from '../../config';
 /**
  * read ports.json config
  */
-let ports = require(path.join(process.cwd(), 'tools/config/stub_proxy/server-port.json'));
+let ports = require(path.join(process.cwd(), 'tools/config/stub_api/server-port.json'));
 
 /**
  * Serves the Single Page Application.
  */
-export function serveAll(cb: Function, proxyTarget: string = 'stubs', isDebug: boolean = true) {
+export function serveAll(cb: Function, apiTarget: string = 'stubs', isDebug: boolean = true) {
 
     const tracker = (Math.random() * Date.now()).toString(36);
-    const params = `tracker=${tracker}&debug=${isDebug}&proxy=${proxyTarget}`;
+    const params = `tracker=${tracker}&debug=${isDebug}&proxy=${apiTarget}`;
 
     process.on('exit', (_: any) => changeFileManager.clear());
     process.on('SIGINT', (_: any) => process.exit(1));
@@ -29,10 +29,10 @@ export function serveAll(cb: Function, proxyTarget: string = 'stubs', isDebug: b
     const livereloader = require('tiny-lr')();
     codeChangeTool.setLiveReloader(livereloader);
     const reload = require(path.join(process.cwd(), 'tools/server/reload')).serve({ port: ports.livereload, tinylr: livereloader });
-    const proxy = require(path.join(process.cwd(), 'tools/server/proxy')).serve({ port: ports.proxy });
+    const api = require(path.join(process.cwd(), 'tools/server/api')).serve({ port: ports.api });
     const stub = require(path.join(process.cwd(), 'tools/server/stub')).serve({ port: ports.stub });
 
-    server.serve({ port: ports.web, livereloadPort: ports.livereload, reload, proxy, stub })
+    server.serve({ port: ports.web, livereloadPort: ports.livereload, reload, api, stub })
         .then((instance: any) => {
             const { port, address } = instance.address();
             open(`http://${address}:${port}/?${params}`);

@@ -9,7 +9,7 @@ const httpProxy = require('http-proxy');
 const debug = require('debug')('upstream:proxy');
 const forgeNotSupported = 'Proxying to forge is not supported. Please go to the forge on target environment directly';
 const proxyNotConfigured = (target: any) => {
-    return `Proxy ${target} does not exist. Please make sure the proxy is configured in tools/config/stub_proxy/api-address.json`;
+    return `API Server ${target} does not exist. Please make sure the proxy is configured in tools/config/stub_api/api-address.json`;
 };
 const localUseIfDefined = function (proxy: any, target: any) {
     return proxy[target];
@@ -56,7 +56,7 @@ exports.serve = function(options: any) {
                 if (!err) {
                     return;
                 }
-                log('Please verify `tools/config/stub_proxy/api-address.json` is correct:');
+                log('Please verify `tools/config/stub_api/api-address.json` is correct:');
                 log(` - Duplicate entries of ${origin.proxy} may override correct setting.`);
                 return log(`WebSocket proxying error ${err}`);
             });

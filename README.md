@@ -15,8 +15,8 @@ We can test web application with local stub json file or api server.
 
 ## Config
 
-- set port of servers :  ```tools/config/stub_proxy/server-port.json```
-- set address of api server : ```tools/config/stub_proxy/api-address.json```
+- set port of servers :  ```tools/config/stub_api/server-port.json```
+- set address of api server : ```tools/config/stub_api/api-address.json```
 
 ## Codes
 
@@ -30,7 +30,6 @@ If you call api of application internally such as ```http://0.0.0.0:5050/stubs/a
 
 to be continue...
 
---------
 --------
 --------
 ## Angular-Seed Introduction

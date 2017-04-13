@@ -10,7 +10,7 @@ function report(server: any, template: any) {
     return Promise.resolve(server)
         .then((instance: any) => {
             const ref = instance.address(), address = ref.address, port = ref.port;
-            return console.log('[' + util.colors.blue(Config.STUB_PROXY_PREFIX) + '] '
+            return console.log('[' + util.colors.blue(Config.STUB_API_PREFIX) + '] '
                                    + util.colors.bold(template(`http://${address}:${port}/`)));
         });
 }
@@ -47,7 +47,7 @@ exports.serve = function(options: any) {
             report(options.reload, (host: string) => {
                 return 'Serving LiveReload on ' + host;
             });
-            report(options.proxy, (host: string) => {
+            report(options.api, (host: string) => {
                 return 'Serving API on ' + host;
             });
             report(options.stub, (host: string) => {
