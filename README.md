@@ -1,7 +1,19 @@
-# Angular Development & Test Environment
-Development &amp; Test Environment based on NodeJS, Tomcat with http-proxy
+# Development & Test Environment based on angular-seed
+We can test web application with local stub json file or api server. 
 
-# Introduction
+[[https://github.com/ysyun/angular-seed-stub-proxy-environment/blob/master/tools/as-spe.png|alt=stub-proxy]]
+
+- Static Server: It serves static files (.js, .css, .font, .html)
+- Stub Server: It serves local stub json files 
+- Proxy Server: It serves local/remote API server
+
+## Usage
+ to be continue... 
+
+--------
+--------
+--------
+## Angular-Seed Introduction
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 [![Build Status](https://travis-ci.org/mgechev/angular-seed.svg?branch=master)](https://travis-ci.org/mgechev/angular-seed)
 [![Build Status](https://ci.appveyor.com/api/projects/status/jg5vg36w0klpa00e/branch/master?svg=true)](https://ci.appveyor.com/project/mgechev/angular2-seed)
