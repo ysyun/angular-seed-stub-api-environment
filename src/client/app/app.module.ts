@@ -10,15 +10,17 @@ import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 
 import { StubAPIModule } from './stub-api/stub-api.module';
+import { StubApiGuard } from './app-stubapi.guard';
 
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, HomeModule, StubAPIModule, SharedModule.forRoot()],
+  imports: [BrowserModule, HttpModule, AboutModule, HomeModule, StubAPIModule, SharedModule.forRoot(), AppRoutingModule],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
     useValue: '<%= APP_BASE %>'
-  }],
+  },
+  StubApiGuard],
   bootstrap: [AppComponent]
 
 })

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterService } from '../router.service';
 
 /**
  * This class represents the navigation bar component.
@@ -9,4 +10,11 @@ import { Component } from '@angular/core';
   templateUrl: 'navbar.component.html',
   styleUrls: ['navbar.component.css'],
 })
-export class NavbarComponent { }
+export class NavbarComponent {
+
+  constructor(private _router: RouterService) { }
+  
+  go(url: string) {
+    this._router.go(url);
+  }
+}

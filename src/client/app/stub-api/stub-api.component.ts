@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
     moduleId: module.id,
     selector: 'stub-api',
     template: ` 
-        
+        <h1> This is Stub Api sample page</h1>
     `
 })
 

@@ -21,7 +21,7 @@ module.exports.parse = function (req: any) {
     referer = headers['referer'] || req.url;
     referer = url.parse(referer);
     platform = 'desktop';
-    if (~ua.indexOf('iPad')) {
+    if (ua && ~ua.indexOf('iPad')) {
         platform = 'tablet';
     }
     params = querystring.parse(referer.query);

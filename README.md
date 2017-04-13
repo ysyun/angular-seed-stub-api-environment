@@ -17,6 +17,7 @@ We can test web application with local stub json file or api server.
 
 - set port of servers :  ```tools/config/stub_api/server-port.json```
 - set address of api server : ```tools/config/stub_api/api-address.json```
+- set static path and index.html : ```tools/config/stub_api/static-uri.json```
 
 ## Codes
 

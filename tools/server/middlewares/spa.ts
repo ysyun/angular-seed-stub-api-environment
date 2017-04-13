@@ -4,6 +4,8 @@ import * as fs from 'fs-extra';
 import * as glob from 'glob';
 // import Config from '../../config';
 
+let staticUrls = require(path.join(process.cwd(), 'tools/config/stub_api/static-uri.json'));
+
 module.exports = function (options: any) {
     if (!options) {
         options = {};
@@ -13,21 +15,32 @@ module.exports = function (options: any) {
     const reload = options.reload;
 
     return function (req: any, res: any, next: any) {
-        const parseUrl = url.parse(req.url);
-        const pathname = parseUrl.pathname;
-        if (pathname === '/'
-            || pathname.indexOf('app') >= 0
-            || pathname.indexOf('assets') >= 0
-            || pathname.indexOf('css') >= 0) {
+        const pathname = url.parse(req.url).pathname;
+        let isStatic: boolean = false;
+        let isIndex: boolean = false;
+        if (pathname === '/') {
+            isStatic = true;
+            isIndex = true;
+        } else {
+            staticUrls.forEach((url: any) => {
+                if (isStatic) { return; }
+                isStatic = pathname.indexOf(url.path) === 0;
+                if (isStatic) {
+                    isIndex = url.index;
+                    return;
+                }
+            });
+        }
+
+        if (isStatic) {
             let fileName: any;
-            if (pathname === '/') {
+            if (isIndex) {
                 // fileName = path.resolve(path.join(process.cwd(), Config.APP_DEST, 'index.html'));
                 fileName = path.resolve(path.join(process.cwd(), 'dist/dev/', 'index.html'));
             } else {
                 // fileName = path.resolve(path.join(process.cwd(), Config.APP_DEST, pathname));
                 fileName = path.resolve(path.join(process.cwd(), 'dist/dev/', pathname));
             }
-            // console.log('>>> fileName', fileName);
 
             fs.readFile(fileName, (err: any, data: any) => {
                 if (err) {
