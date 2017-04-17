@@ -1,6 +1,6 @@
 {
   "name": "angular-seed-stub-api-environment",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Local developement with Stub/Api server based on angular-seed",
   "repository": {
     "url": "https://github.com/ysyun/angular-seed-stub-api-environment.git"
