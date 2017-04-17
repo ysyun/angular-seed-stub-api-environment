@@ -17,8 +17,7 @@ let ports = require(path.join(process.cwd(), 'tools/config/stub_api/server-port.
  */
 export function serveAll(cb: Function, apiTarget: string = 'stubs', isDebug: boolean = true) {
 
-    const tracker = (Math.random() * Date.now()).toString(36);
-    const params = `tracker=${tracker}&debug=${isDebug}&proxy=${apiTarget}`;
+    const params = `debug=${isDebug}&proxy=${apiTarget}`;
 
     process.on('exit', (_: any) => changeFileManager.clear());
     process.on('SIGINT', (_: any) => process.exit(1));

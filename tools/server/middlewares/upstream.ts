@@ -11,6 +11,7 @@ module.exports = function (options: any) {
     }
 
     const server = options.server, proxy = options.proxy, stub = options.stub;
+    let target = stub;
     const upstream = httpProxy.createProxyServer({ timeout: 600000 });
     let socket2origin: any = {};
     upstream.on('error', debug);
@@ -24,10 +25,10 @@ module.exports = function (options: any) {
         if (!origin) {
             return console.log(`Origin for socket ${socketId} is undefined. Is socket.io properly setup?`);
         }
-        // default target is stub server
-        let target = options.stub;
         if (req.origin && req.origin.proxy && req.origin.proxy !== 'stubs') {
-           target = options.proxy;
+           target = proxy;
+        } else if (req.origin && req.origin.proxy && req.origin.proxy === 'stubs') {
+           target = stub;
         }
         return target.then((instance: any) => {
             const ref = instance.address(), address = ref.address, port = ref.port;
@@ -39,10 +40,10 @@ module.exports = function (options: any) {
     });
 
     return function (req: any, res: any, next: any) {
-        // default target is stub server
-        let target = options.stub;
         if (req.origin && req.origin.proxy && req.origin.proxy !== 'stubs') {
-           target = options.proxy;
+           target = proxy;
+        } else if (req.origin && req.origin.proxy && req.origin.proxy === 'stubs') {
+           target = stub;
         }
         return target.then(function (instance: any) {
             const ref = instance.address(), address = ref.address, port = ref.port;
