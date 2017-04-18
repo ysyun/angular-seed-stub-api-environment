@@ -1,5 +1,5 @@
 # Development & Test Environment based on angular-seed
-We can test web application with local stub json file or api server. 
+We can test/develop web application with local stub json file or api proxy server. 
 
 ![alt tag](https://raw.githubusercontent.com/ysyun/angular-seed-stub-proxy-environment/master/tools/as-ssa.png)
 
