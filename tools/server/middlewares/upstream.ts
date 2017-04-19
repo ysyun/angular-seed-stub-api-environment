@@ -1,6 +1,7 @@
 import * as path from 'path';
 import * as url from 'url';
 import * as fs from 'fs-extra';
+// import * as proxy from 'http-proxy';
 import * as _ from 'underscore';
 const httpProxy = require('http-proxy');
 const debug = require('debug')('server:upstream');
@@ -12,6 +13,7 @@ module.exports = function (options: any) {
 
     const server = options.server, proxy = options.proxy, stub = options.stub;
     let target = stub;
+    let originProxyName = 'stubs';
     const upstream = httpProxy.createProxyServer({ timeout: 600000 });
     let socket2origin: any = {};
     upstream.on('error', debug);
@@ -25,10 +27,11 @@ module.exports = function (options: any) {
         if (!origin) {
             return console.log(`Origin for socket ${socketId} is undefined. Is socket.io properly setup?`);
         }
-        if (req.origin && req.origin.proxy && req.origin.proxy !== 'stubs') {
-           target = proxy;
-        } else if (req.origin && req.origin.proxy && req.origin.proxy === 'stubs') {
-           target = stub;
+
+        if (origin && origin.proxy && origin.proxy !== 'stubs') {
+            target = proxy;
+        } else if (origin && origin.proxy && origin.proxy === 'stubs') {
+            target = stub;
         }
         return target.then((instance: any) => {
             const ref = instance.address(), address = ref.address, port = ref.port;
@@ -41,10 +44,13 @@ module.exports = function (options: any) {
 
     return function (req: any, res: any, next: any) {
         if (req.origin && req.origin.proxy && req.origin.proxy !== 'stubs') {
-           target = proxy;
+            target = proxy;
+            originProxyName = req.origin.proxy;
         } else if (req.origin && req.origin.proxy && req.origin.proxy === 'stubs') {
-           target = stub;
+            target = stub;
+            originProxyName = 'stubs';
         }
+
         return target.then(function (instance: any) {
             const ref = instance.address(), address = ref.address, port = ref.port;
             const host = `http://${address}:${port}/`;
@@ -57,7 +63,12 @@ module.exports = function (options: any) {
                     return fn.call(this, chunk, encoding, callback);
                 });
             }
-            console.log('> forward ' + req.url + ' to ' + host);
+
+            if (req.headers['referer'].indexOf('?') < 0) {
+                req.headers['referer'] += '?proxy=' + originProxyName;
+            }
+            console.log('> forward ' + req.url + ' to ' + host + ' req.headers[refere]', req.headers['referer']);
+
             return upstream.web(req, res, {
                 target: host
             }, (err: any, req: any, res: any, target: any) => {

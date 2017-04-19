@@ -15,9 +15,9 @@ let ports = require(path.join(process.cwd(), 'tools/config/stub_api/server-port.
 /**
  * Serves the Single Page Application.
  */
-export function serveAll(cb: Function, apiTarget: string = 'stubs', isDebug: boolean = true) {
+export function serveAll(cb: Function, apiTarget: string = 'stubs') {
 
-    const params = `debug=${isDebug}&proxy=${apiTarget}`;
+    const params = `proxy=${apiTarget}`;
 
     process.on('exit', (_: any) => changeFileManager.clear());
     process.on('SIGINT', (_: any) => process.exit(1));

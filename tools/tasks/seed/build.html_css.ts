@@ -42,7 +42,9 @@ const abtractSCSSFiles  = join(Config.SCSS_SRC, '**', '*.scss');
  * Copies all HTML files in `src/client` over to the `dist/tmp` directory.
  */
 function prepareTemplates() {
-  return gulp.src(join(Config.APP_SRC, '**', '*.html'))
+  return gulp.src([
+      join(Config.APP_SRC, '**', '*.html')
+    ].concat(Config.EXCLUDE_FILES.map((excludefile: string) => '!' + excludefile )))
     .pipe(gulp.dest(Config.TMP_DIR));
 }
 
@@ -98,7 +100,7 @@ function processComponentCss() {
   return gulp.src([
     join(Config.APP_SRC, '**', '*.css'),
     '!' + join(Config.APP_SRC, 'assets', '**', '*.css')
-  ])
+  ].concat(Config.EXCLUDE_FILES.map((excludefile: string) => '!' + excludefile )))
     .pipe(isProd ? plugins.cached('process-component-css') : plugins.util.noop())
     .pipe(plugins.postcss(processors))
     .on('error', reportPostCssError)

@@ -10,7 +10,7 @@ function report(server: any, template: any) {
     return Promise.resolve(server)
         .then((instance: any) => {
             const ref = instance.address(), address = ref.address, port = ref.port;
-            return console.log('[' + util.colors.blue(Config.STUB_API_PREFIX) + '] '
+            return console.log('[' + util.colors.blue(Config.STUB_API_LOG_PREFIX) + '] '
                                    + util.colors.bold(template(`http://${address}:${port}/`)));
         });
 }

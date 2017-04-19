@@ -24,7 +24,8 @@ export = () => {
     Config.TOOLS_DIR + '/manual_typings/**/*.d.ts',
     join(Config.TMP_DIR, '**/*.ts'),
     '!' + join(Config.TMP_DIR, `**/${Config.NG_FACTORY_FILE}.ts`)
-  ];
+  ].concat(Config.EXCLUDE_FILES.map((excludefile: string) => '!' + excludefile ));
+
   let result = gulp.src(src)
     .pipe(plugins.plumber())
     .pipe(plugins.inlineNg2Template(INLINE_OPTIONS))
@@ -33,6 +34,9 @@ export = () => {
       this.once('finish', () => process.exit(1));
     });
 
+  // create d.ts
+  result.dts
+    .pipe(gulp.dest(Config.TMP_DIR));
 
   return result.js
     .pipe(plugins.template(new TemplateLocalsBuilder().build()))

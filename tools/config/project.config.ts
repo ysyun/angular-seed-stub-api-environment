@@ -11,15 +11,40 @@ export class ProjectConfig extends SeedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
 
-  STUB_API_PREFIX = 'JM';
+  STUB_API_LOG_PREFIX = 'JM';
+
+  /**
+   * production bundle file for debuggin
+   */
+  JS_PROD_APP_DEBUG_BUNDLE = 'app-debug.js';
+  JS_PROD_APP_DEFINITION_BUNDLE = 'app-debug.d.ts';
+
+  /**
+   * << Exclude Folder & File >> 
+   * The excluding base folder is "/src/client/app". When you execute "build.prod" tasker, this option can be ran.
+   * 
+   * 1) If you want to exclude folder: ** / <folder-name> / **
+   *    e.g) If you set "** /test/ **", "src/client/app/test/*.*" all files 
+   *                                       and "src/client/app/test/**" all folders will be excluded.
+   * 
+   * 2) If you want to exclude file: ** / <folder-name> / *.txt (or tip.txt)
+   *    e.g) If you set "** /test/ *.txt", "src/client/app/test/*.txt" one file will be excluded.
+   * 
+   * @reference: tasks/seed/copy.prod.ts, build.assets.prod.ts, build.html_css.ts
+   */
+  EXCLUDE_FILES: [string];
 
   constructor() {
     super();
-    // this.APP_TITLE = 'Put name of your app here';
+
+    this.APP_TITLE = 'Stub API Development Environment';
     // this.GOOGLE_ANALYTICS_ID = 'Your site's ID';
 
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
+
+    // ADD EXCLUDE_FILES
+    this.EXCLUDE_FILES = ['**/test/*.txt', '**/*.test.ts'];
 
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [

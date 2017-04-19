@@ -35,6 +35,8 @@
     "copy.prod",
     "build.js.prod",
     "build.bundles",
+    "build.bundles.app.debug",
+    "build.bundles.app.definition",
     "build.bundles.app",
     "minify.bundles",
     "build.index.prod",
