@@ -12,6 +12,6 @@ export = () => {
       join(Config.APP_SRC, '**/*.json'),
       '!' + join(Config.APP_SRC, '**/*.spec.ts'),
       '!' + join(Config.APP_SRC, '**/*.e2e-spec.ts')
-    ].concat(Config.EXCLUDE_FILES.map((excludefile: string) => '!' + excludefile )))
+    ].concat(Config.EXCLUDE_COPING_FILES.map((excludefile: string) => '!' + join(Config.APP_SRC, excludefile) )))
     .pipe(gulp.dest(Config.TMP_DIR));
 };

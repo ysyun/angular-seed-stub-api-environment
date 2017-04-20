@@ -13,10 +13,10 @@ const plugins = <any>gulpLoadPlugins();
 
 export = () => {
   let src = [
-    Config.TOOLS_DIR + '/manual_typings/**/*.d.ts',
+    // Config.TOOLS_DIR + '/manual_typings/**/*.d.ts',
     join(Config.TMP_DIR, '/app/**/*.d.ts')
   ];
-console.log('>> definitions', src[1]);
+
   return gulp.src(src)
     .pipe(plugins.plumber())
     .pipe(plugins.concat(Config.JS_PROD_APP_DEFINITION_BUNDLE))

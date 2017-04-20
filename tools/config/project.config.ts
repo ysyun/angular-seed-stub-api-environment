@@ -16,8 +16,8 @@ export class ProjectConfig extends SeedConfig {
   /**
    * production bundle file for debuggin
    */
-  JS_PROD_APP_DEBUG_BUNDLE = 'app-debug.js';
-  JS_PROD_APP_DEFINITION_BUNDLE = 'app-debug.d.ts';
+  JS_PROD_APP_DEBUG_BUNDLE: string;
+  JS_PROD_APP_DEFINITION_BUNDLE: string;
 
   /**
    * << Exclude Folder & File >> 
@@ -32,19 +32,22 @@ export class ProjectConfig extends SeedConfig {
    * 
    * @reference: tasks/seed/copy.prod.ts, build.assets.prod.ts, build.html_css.ts
    */
-  EXCLUDE_FILES: [string];
+  EXCLUDE_COPING_FILES: [string];
 
   constructor() {
     super();
-
-    this.APP_TITLE = 'Stub API Development Environment';
     // this.GOOGLE_ANALYTICS_ID = 'Your site's ID';
 
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
 
-    // ADD EXCLUDE_FILES
-    this.EXCLUDE_FILES = ['**/test/*.txt', '**/*.test.ts'];
+    this.APP_TITLE = 'Stub API Development Environment';
+
+    this.JS_PROD_APP_DEBUG_BUNDLE = 'app-debug.js';
+    this.JS_PROD_APP_DEFINITION_BUNDLE = 'app-debug.d.ts';
+
+    // ADD EXCLUDE_COPING_FILES
+    this.EXCLUDE_COPING_FILES = ['**/test/*.txt', '**/*.test.ts'];
 
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [

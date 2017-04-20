@@ -9,6 +9,9 @@
         "path": "/css/"
     },
     {
+        "path": "/js/"
+    },
+    {
         "path": "/about",
         "index": true
     },
