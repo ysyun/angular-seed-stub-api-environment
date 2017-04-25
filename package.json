@@ -1,6 +1,6 @@
 {
   "name": "angular-seed-stub-api-environment",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Development Environment with Stub/Api server based on angular-seed",
   "repository": {
     "url": "https://github.com/ysyun/angular-seed-stub-api-environment.git"
@@ -27,7 +27,7 @@
     "reinstall": "npm cache clean && npm install",
     "serve.coverage": "gulp serve.coverage --color",
     "serve": "gulp serve --color --env-config dev",
-    "serve.dev": "gulp serve.dev --color --env-config dev",
+    "serve.dev": "gulp serve --color --env-config dev",
     "serve.e2e": "gulp serve.e2e --color",
     "serve.prod": "gulp serve.prod --color --env-config prod --build-type prod",
     "serve.prod.aot": "gulp serve.prod.aot --color --env-config prod --build-type prod",

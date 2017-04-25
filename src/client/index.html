@@ -53,5 +53,18 @@
   </script>
   <% } %>
 
+  <% if (BUILD_TYPE === 'prod') { %>
+  <script>
+    var app_script = document.createElement('script');
+    if (~location.search.indexOf('debug=true')) {
+        app_script.setAttribute('src','<%= APP_BASE %>js/<%= JS_PROD_APP_DEBUG_BUNDLE %>');
+        document.body.appendChild(app_script);
+    } else {
+        app_script.setAttribute('src','<%= APP_BASE %>js/<%= JS_PROD_APP_BUNDLE %>');
+        document.body.appendChild(app_script);
+    }
+  </script>
+  <% } %>
+
 </body>
 </html>

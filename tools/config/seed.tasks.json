@@ -98,8 +98,8 @@
 
   "serve.dev": [
     "build.dev",
-    "server.start",
-    "watch.dev"
+    "watch.dev",
+    "server.all.start"
   ],
 
   "serve.e2e": [
