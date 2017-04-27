@@ -39,12 +39,8 @@ ts-node
 .idea
 *.iml
 
-/tools/**/*.js
 dist
 dev
-docs
-lib
-test
 tmp
 
 gulpfile.js
