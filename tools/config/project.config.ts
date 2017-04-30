@@ -32,7 +32,7 @@ export class ProjectConfig extends SeedConfig {
    * 
    * @reference: tasks/seed/copy.prod.ts, build.assets.prod.ts, build.html_css.ts
    */
-  EXCLUDE_COPING_FILES: [string];
+  EXCLUDE_COPING_FILES_IN_PROD: [string];
 
   constructor() {
     super();
@@ -46,8 +46,8 @@ export class ProjectConfig extends SeedConfig {
     this.JS_PROD_APP_DEBUG_BUNDLE = 'app-debug.js';
     this.JS_PROD_APP_DEFINITION_BUNDLE = 'app-debug.d.ts';
 
-    // ADD EXCLUDE_COPING_FILES
-    this.EXCLUDE_COPING_FILES = ['**/test/*.txt', '**/*.test.ts'];
+    // ADD EXCLUDE_COPING_FILES_IN_PROD
+    this.EXCLUDE_COPING_FILES_IN_PROD = ['**/test/*.txt', '**/*.test.ts'];
 
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
