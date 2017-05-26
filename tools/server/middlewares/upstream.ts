@@ -11,7 +11,7 @@ module.exports = function (options: any) {
         options = {};
     }
 
-    const server = options.server, proxy = options.proxy, stub = options.stub;
+    const server = options.server, proxy = options.api, stub = options.stub;
     let target = stub;
     let originProxyName = 'stubs';
     const upstream = httpProxy.createProxyServer({ timeout: 600000 });

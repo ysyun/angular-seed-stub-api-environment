@@ -48,7 +48,13 @@ module.exports = function (options: any) {
                     res.writeHead(404, { 'Content-type': 'text/plain' });
                     res.end('Sorry the page was not found in static web server');
                 } else {
-                    //  res.writeHead(202, { 'Content-type': contentType(file) });
+                    if (fileName.indexOf('.js') >= 0) {
+                        res.writeHead(200, { 'Content-type': 'application/javascript' });
+                    } else if (fileName.indexOf('.css') >= 0) {
+                        res.writeHead(200, { 'Content-type': 'text/css' });
+                    } else if (fileName.indexOf('.svg') >= 0) {
+                        res.writeHead(200, { 'Content-type': 'image/svg+xml' });
+                    }
                     res.end(data);
                 }
             });
