@@ -1,0 +1,14 @@
+[
+    {
+        "path": "/"
+    },
+    {
+        "path": "/home"
+    },
+    {
+        "path": "/about"
+    },
+    {
+        "path": "/stubapi"
+    }
+]
