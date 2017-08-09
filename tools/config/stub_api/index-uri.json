@@ -3,6 +3,9 @@
         "path": "/"
     },
     {
+        "path": "/index.html"
+    },
+    {
         "path": "/home"
     },
     {
