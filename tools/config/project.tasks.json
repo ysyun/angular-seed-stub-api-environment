@@ -9,6 +9,10 @@
     "build.dev",
     "watch.dev",
     "server.all.start"
+  ],
+
+  "new": [
+    "create.template"
   ]
 }
 
