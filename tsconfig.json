@@ -41,8 +41,7 @@
   "exclude": [
     "node_modules",
     "dist",
-    "src",
-    "tools"
+    "src"
   ],
   "compileOnSave": false
 }

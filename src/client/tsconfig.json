@@ -29,6 +29,9 @@
   },
   "compileOnSave": false,
   "exclude": [
-    "app/main-prod.ts"
+    "app/main-prod.ts",
+    "tools/templates",
+    "tools/server",
+    "tools/stubs"
   ]
 }

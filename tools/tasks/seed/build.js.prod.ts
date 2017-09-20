@@ -39,7 +39,12 @@ export = () => {
     .pipe(gulp.dest(Config.TMP_DIR));
 
   return result.js
-    .pipe(plugins.template(new TemplateLocalsBuilder().build()))
+    .pipe(
+      plugins.template(
+        new TemplateLocalsBuilder().build(),
+        Config.TEMPLATE_CONFIG
+      )
+    )
     .pipe(gulp.dest(Config.TMP_DIR))
     .on('error', (e: any) => {
       console.log(e);
