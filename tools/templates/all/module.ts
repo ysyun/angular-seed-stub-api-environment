@@ -1,4 +1,5 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -9,6 +10,7 @@ import { #NAME#Service } from './#FILE_NAME#.service';
 @NgModule({
     imports: [
         CommonModule,
+        BrowserModule,
         FormsModule,
         HttpModule,
     ],
