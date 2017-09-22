@@ -17,6 +17,17 @@ module.exports = function (options: any) {
 
     const watcher = options.watcher;
     const reload = options.reload;
+    const staticFiles: any = [
+        'js',
+        'css',
+        'gif',
+        'png',
+        'scss',
+        'ts',
+        'html',
+        'htm',
+        'ico'
+    ];
 
     return function (req: any, res: any, next: any) {
         const pathname = url.parse(req.url).pathname;
@@ -47,14 +58,14 @@ module.exports = function (options: any) {
         });
 
         /**
-         * service Restful 이면 proxy로 가고, static이면 static server에서 수행 
+         * service Restful 이면 proxy로 가고, static이면 static server에서 수행
          */
         if (!isIndex) {
             if (pathname) {
                 // For Restful service call
                 serviceUrls.forEach((url: any) => {
                     if (isService) { return; }
-                    
+
                     isService = pathname.indexOf(url.path) === 0;
                     if (isService) {
                         isStatic = false;
@@ -73,6 +84,16 @@ module.exports = function (options: any) {
                         }
                     });
                 }
+
+                // if (!isStatic) {
+                //     const uri = pathname.split('/');
+                //     const exts = uri[uri.length-1].split('.');
+                //     const ext = exts[exts.length-1];
+                //     if (staticFiles.includes(ext)) {
+                //         console.log('==> check static file extension:', ext);
+                //         isStatic = true;
+                //     }
+                // }
 
             }
         }

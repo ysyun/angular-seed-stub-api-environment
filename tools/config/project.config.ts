@@ -41,6 +41,8 @@ export class ProjectConfig extends SeedConfig {
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
 
+    this.ENABLE_SCSS = true;
+
     this.APP_TITLE = 'Stub API Development Environment';
 
     this.JS_PROD_APP_DEBUG_BUNDLE = 'app-debug.js';
