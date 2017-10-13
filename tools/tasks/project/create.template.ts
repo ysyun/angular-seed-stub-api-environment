@@ -18,17 +18,19 @@ const plugins = <any>gulpLoadPlugins();
 // export = createPlugin();
 
 export = (done: any) => {
-    let type = argv['type'] || 'component';
-    let name = argv['name'] || 'user';
+    let type = argv['type'] || argv['t'] || 'component';
+    let name = argv['name'] || argv['n'] || 'user';
     if (type === 'c') {
         type = 'component';
     } else if (type === 's') {
         type = 'service';
     } else if (type === 'm') {
         type = 'module';
+    } else if (type === 'a') {
+        type = 'all';
     }
 
-    let path = ''
+    let path = '';
     if (name.indexOf('/') >= 0) {
         const paths = name.split('/');
         name = paths[paths.length - 1];
