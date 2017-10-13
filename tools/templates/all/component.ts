@@ -16,4 +16,8 @@ export class #NAME#Component implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5974f3f78d9e775c69c4b83e93d9ad86a48faa25
